@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { defaultTheme, typeScale } from '../utils';
+import { typeScale } from '../utils';
 import { applyStyleModifiers } from 'styled-components-modifiers';
 
 const BUTTON_MODIFIERS = {
@@ -11,100 +11,100 @@ const BUTTON_MODIFIERS = {
   font-size: ${typeScale.header5};
   padding: 16px 24px;
 	`,
-	success: () => `
+	success: ( props ) => `
 	background: linear-gradient(
-		${defaultTheme.status.successColour},
-		${defaultTheme.status.successColourGradient}
+		${props.theme.status.successColour},
+		${props.theme.status.successColourGradient}
 	);
-	color: ${defaultTheme.textColourInverted};
+	color: ${props.theme.text.textColourInverted};
 	border: none;
 	&:focus {
-		outline: 2px solid ${defaultTheme.status.successColour};
+		outline: 2px solid ${props.theme.status.successColour};
 		outline-offset: 2px;
 	}
 	&:active {
 		background: linear-gradient(
-		${defaultTheme.status.successColour},
-		${defaultTheme.status.successColourGradient}
+		${props.theme.status.successColour},
+		${props.theme.status.successColourGradient}
 		);
 	}
 	`,
-	warning: () => `
+	warning: ( props ) => `
 	background: linear-gradient(
-		${defaultTheme.status.warningColour},
-		${defaultTheme.status.warningColourGradient}
+		${props.theme.status.warningColour},
+		${props.theme.status.warningColourGradient}
 	);
-	color: ${defaultTheme.textColourInverted};
+	color: ${props.theme.text.textColourInverted};
 	border: none;
 	&:focus {
-		outline: 2px solid ${defaultTheme.status.warningColour};
+		outline: 2px solid ${props.theme.status.warningColour};
 		outline-offset: 2px;
 	}
 	&:active {
 		background: linear-gradient(
-		${defaultTheme.status.warningColour},
-		${defaultTheme.status.warningColourGradient}
+		${props.theme.status.warningColour},
+		${props.theme.status.warningColourGradient}
 		);
 	}
 	`,
-	error: () => `
+	error: ( props ) => `
 	background: linear-gradient(
-		${defaultTheme.status.errorColour},
-		${defaultTheme.status.errorColourGradient}
+		${props.theme.status.errorColour},
+		${props.theme.status.errorColourGradient}
 	);
-	color: ${defaultTheme.textColourInverted};
+	color: ${props.theme.text.textColourInverted};
 	border: none;
 	&:focus {
-		outline: 2px solid ${defaultTheme.status.errorColour};
+		outline: 2px solid ${props.theme.status.errorColour};
 		outline-offset: 2px;
 	}
 	&:active {
 		background: linear-gradient(
-		${defaultTheme.status.errorColour},
-		${defaultTheme.status.errorColourGradient}
+		${props.theme.status.errorColour},
+		${props.theme.status.errorColourGradient}
 		);
 	}
 	`,
-	successGhostButton: () => `
+	successGhostButton: ( props ) => `
 	background: none;
-	color: ${defaultTheme.status.successColour};
-	border: 2px solid ${defaultTheme.status.successColour};
+	color: ${props.theme.status.successColour};
+	border: 2px solid ${props.theme.status.successColour};
 	
 	&:hover, &:active {
-		background-color: ${defaultTheme.status.successColour};
-		color: ${defaultTheme.textColourInverted};
+		background-color: ${props.theme.status.successColour};
+		color: ${props.theme.text.textColourInverted};
 	}
 
 	&:focus {
-		outline: 2px solid ${defaultTheme.status.successColour};
+		outline: 2px solid ${props.theme.status.successColour};
 		outline-offset: 2px;
 	}
 	`,
-	warningGhostButton: () => `
+	warningGhostButton: ( props ) => `
 	background: none;
-	color: ${defaultTheme.status.warningColour};
-	border: 2px solid ${defaultTheme.status.warningColour};
+	color: ${props.theme.status.warningColour};
+	border: 2px solid ${props.theme.status.warningColour};
 	
 	&:hover, &:active {
-		background-color: ${defaultTheme.status.warningColour};
-		color: ${defaultTheme.textColourInverted};
+		background-color: ${props.theme.status.warningColour};
+		color: ${props.theme.text.textColourInverted};
 	}
 	&:focus {
-		outline: 2px solid ${defaultTheme.status.warningColour};
+		outline: 2px solid ${props.theme.status.warningColour};
 		outline-offset: 2px;
 	}
 	`,
-	errorGhostButton: () => `
+	errorGhostButton: ( props ) => `
 	background: none;
-	color: ${defaultTheme.status.errorColour};
-	border: 2px solid ${defaultTheme.status.errorColour};
+	color: ${props.theme.status.errorColour};
+	border: 2px solid ${props.theme.status.errorColour};
 	
 	&:hover, &:active {
-		background-color: ${defaultTheme.status.errorColour};
-		color: ${defaultTheme.textColourInverted};
+		background-color: ${props.theme.status.errorColour};
+		color: ${props.theme.text.textColourInverted};
 	}
 	&:focus {
-		outline: 2px solid ${defaultTheme.status.errorColour};
+		outline: 2px solid ${props.theme.status.errorColour};
 		outline-offset: 2px;
 	}
 	`,
@@ -116,7 +116,7 @@ const Button = styled.button`
 	border-radius: 3px;
 	min-width: 100px;
 	cursor: pointer;
-	font-family: ${defaultTheme.primaryFont};
+	font-family: ${(props) => props.theme.text.primaryFont};
 	border: none;
 	outline: none;
 
@@ -125,7 +125,7 @@ const Button = styled.button`
 	}
 
 	&:disabled {
-		background: ${defaultTheme.disabledColour};
+		background: ${(props) => props.theme.colour.disabledColour};
 		cursor: not-allowed;
 		box-shadow: none;
 	}
@@ -133,20 +133,20 @@ const Button = styled.button`
 
 export const PrimaryButton = styled(Button)`
 	background: linear-gradient(
-		${defaultTheme.secondaryColour},
-		${defaultTheme.secondaryColourGradient}
+		${(props) => props.theme.colour.secondaryColour},
+		${(props) => props.theme.colour.secondaryColourGradient}
 	);
 	color: white;
-	box-shadow: ${defaultTheme.ButtonDropShadow};
+	box-shadow: ${(props) => props.theme.shadow.dropShadow};
 
 	&:focus {
-		outline: 2px solid ${defaultTheme.secondaryColour};
+		outline: 2px solid ${(props) => props.theme.colour.secondaryColour};
 		outline-offset: 2px;
 	}
 
 	&:active {
-		background: ${defaultTheme.secondaryColourActive};
-		box-shadow: ${defaultTheme.ButtonInnerShadow};
+		background: ${(props) => props.theme.colour.secondaryColourActive};
+		box-shadow: ${(props) => props.theme.shadow.innerShadow};
 	}
 
 	${applyStyleModifiers(BUTTON_MODIFIERS)}
@@ -154,20 +154,20 @@ export const PrimaryButton = styled(Button)`
 
 export const SecondaryButton = styled(Button)`
 	background: linear-gradient(
-		${defaultTheme.tertiaryColour},
-		${defaultTheme.tertiaryColourGradient}
+		${(props) => props.theme.colour.tertiaryColour},
+		${(props) => props.theme.colour.tertiaryColourGradient}
 	);
 	color: white;
-	box-shadow: ${defaultTheme.ButtonDropShadow};
+	box-shadow: ${(props) => props.theme.shadow.shadowropShadow};
 
 	&:focus {
-		outline: 2px solid ${defaultTheme.tertiaryColour};
+		outline: 2px solid ${(props) => props.theme.colour.tertiaryColour};
 		outline-offset: 2px;
 	}
 
 	&:active {
-		background: ${defaultTheme.tertiaryColourActive};
-		box-shadow: ${defaultTheme.ButtonInnerShadow};
+		background: ${(props) => props.theme.colour.tertiaryColourActive};
+		box-shadow: ${(props) => props.theme.shadow.innerShadow};
 	}
 
 	${applyStyleModifiers(BUTTON_MODIFIERS)}
@@ -175,24 +175,24 @@ export const SecondaryButton = styled(Button)`
 
 export const TertiaryButton = styled(Button)`
 	background: none;
-	color: ${defaultTheme.secondaryColour};
-	border: 2px solid ${defaultTheme.secondaryColour};
-	box-shadow: ${defaultTheme.ButtonDropShadow};
+	color: ${(props) => props.theme.colour.secondaryColour};
+	border: 2px solid ${(props) => props.theme.colour.secondaryColour};
+	box-shadow: ${(props) => props.theme.shadow.dropShadow};
 
 	&:focus {
-		outline: 2px solid ${defaultTheme.secondaryColour};
+		outline: 2px solid ${(props) => props.theme.colour.secondaryColour};
 		outline-offset: 2px;
 	}
 
 	&:active {
-		background: ${defaultTheme.secondaryColour};
-		box-shadow: ${defaultTheme.ButtonInnerShadow};
-		color: ${defaultTheme.textColourInverted};
+		background: ${(props) => props.theme.colour.secondaryColour};
+		box-shadow: ${(props) => props.theme.shadow.innerShadow};
+		color: ${(props) => props.theme.text.textColourInverted};
 	}
 
 	&:disabled {
-		color: ${defaultTheme.disabledColour};
-		border: 2px solid ${defaultTheme.disabledColour};
+		color: ${(props) => props.theme.colour.disabledColour};
+		border: 2px solid ${(props) => props.theme.colour.disabledColour};
 		background: none;
 	}
 

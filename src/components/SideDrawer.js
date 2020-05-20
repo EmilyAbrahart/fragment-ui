@@ -1,19 +1,43 @@
 import styled from 'styled-components';
 import { applyStyleModifiers } from 'styled-components-modifiers';
-import { defaultTheme, typeScale } from '../utils';
+import { typeScale } from '../utils';
 
 // Modifiers
 
 const LIST_ITEM_MODIFIERS = {
-	listHeader: () => `
+	listHeader: ( props ) => `
 	padding: 12px 0;
-	color: ${defaultTheme.textColourOnDark};
+	color: ${props.theme.text.textColourOnDark};
 	`,
-	title: () => `
+	title: ( props ) => `
 	font-size: ${typeScale.header4};
-	color: ${defaultTheme.textTitleColourOnDark}
+	color: ${props.theme.text.textColourInverted};
 	align-self: center;
 	text-align: center;
+	`,
+	coloredBullet: ( props ) => `
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			left: -24px;
+			top: 8px;
+			background-color: ${props.theme.colour.secondaryColour};
+			border-radius: 50%;
+			height: 16px;
+			width: 16px;
+			box-shadow: ${props.theme.shadow.innerShadow};
+			
+		}
+	`,
+};
+
+const SIDE_BAR_MODIFIERS = {
+	narrow: () => `
+		width: 250px;
+	`,
+	fixed: () => `
+		position: fixed;
 	`,
 };
 
@@ -22,7 +46,7 @@ const LIST_ITEM_MODIFIERS = {
 export const SideDrawer = styled.div`
 	height: 100%;
 	width: 350px;
-	background-color: ${defaultTheme.primaryColour};
+	background-color: ${(props) => props.theme.colour.primaryColour};
 	position: absolute;
 	left: 0;
 	display: flex;
@@ -30,6 +54,8 @@ export const SideDrawer = styled.div`
 	justify-content: flex-start;
 	align-items: center;
 	padding: 32px 16px;
+
+	${applyStyleModifiers(SIDE_BAR_MODIFIERS)}
 `;
 
 // Side Drawer Section List
@@ -49,11 +75,11 @@ export const SideDrawerList = styled.ul`
 
 export const SideDrawerItem = styled.li`
 	font-size: ${typeScale.paragraph};
-	color: ${defaultTheme.textColourOnDark};
+	color: ${(props) => props.theme.text.textColourOnDark};
 	padding: 8px 0;
 	text-align: left;
 	width: 80%;
+	position: relative;
 
 	${applyStyleModifiers(LIST_ITEM_MODIFIERS)}
 `;
-
