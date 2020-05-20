@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { ThemeProvider } from 'styled-components';
+import {
+	PrimaryButton,
+	SecondaryButton,
+	TertiaryButton,
+	SideDrawer,
+	SideDrawerList,
+	SideDrawerItem,
+	AppBar,
+} from './components';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { GlobalStyle, darkTheme, defaultTheme } from './utils';
+
+const App = () => {
+	const [useDarkTheme, setUseDarkTheme] = useState(false);
+
+	return (
+		<div>
+			<AppBar />
+			<SideDrawer>
+				<SideDrawerList>
+					<SideDrawerItem modifiers="title">My Snippets</SideDrawerItem>
+				</SideDrawerList>
+				<PrimaryButton>New Snippet</PrimaryButton>
+				<SideDrawerList>
+					<SideDrawerItem>All Snippets</SideDrawerItem>
+					<SideDrawerItem>Starred Snippets</SideDrawerItem>
+				</SideDrawerList>
+				<SideDrawerList>
+					<SideDrawerItem modifiers="listHeader">First Item</SideDrawerItem>
+					<SideDrawerItem>First Item</SideDrawerItem>
+				</SideDrawerList>
+				<PrimaryButton>Fragment UI</PrimaryButton>
+				<SecondaryButton>Fragment UI</SecondaryButton>
+				<TertiaryButton>Fragment UI</TertiaryButton>
+			</SideDrawer>
+
+			<GlobalStyle />
+		</div>
+	);
+};
 
 export default App;
