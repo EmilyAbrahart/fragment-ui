@@ -12,5 +12,10 @@ export const Input = styled.input`
 `
 
 export const TextArea = styled.textarea`
-  
+   	width: 400px;
+	padding: 8px 16px;
+	border-radius: 8px;
+	border: none;
+  background-color: ${props => props.theme.colour.inputColour};
+  margin: 100px;
 `
