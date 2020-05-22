@@ -15,6 +15,8 @@ export const defaultTheme = {
 		disabledColour: colours.neutralColour[400],
 		inputColour: colours.neutralColour[200],
 		inputColourDark: colours.primaryColour[400],
+		iconColour: colours.neutralColour[500],
+		iconColourOnDark: colours.primaryColour[100],
 	},
 	text: {
 		textColour: colours.neutralColour[600],
@@ -71,4 +73,3 @@ export const darkTheme = {
 		warningColourGradient: colours.warningColour[200],
 	},
 };
-

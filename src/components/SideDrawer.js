@@ -47,8 +47,6 @@ export const SideDrawer = styled.div`
 	height: 100%;
 	width: 350px;
 	background-color: ${(props) => props.theme.colour.primaryColour};
-	position: absolute;
-	left: 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
